@@ -1,0 +1,203 @@
+1)Write an R program to perform basic arithmetic operations: addition, subtraction, multiplication, and 
+division. 
+a <- as.numeric(readline("Enter first number: ")) 
+b <- as.numeric(readline("Enter second number: ")) 
+sum <- a + b 
+diff <- a - b 
+mul <- a * b 
+div <- a / b 
+print(paste("Addition:", sum)) 
+print(paste("Subtraction:", diff)) 
+print(paste("Multiplication:", mul)) 
+print(paste("Division:", div)) 
+
+2)Write an R program to create variables of different data types (numeric, character, logical, etc.). 
+num1<-42.5 
+cat(class(num1)) 
+num2<-20L 
+cat(class(num2)) 
+num3<-"Hello" 
+cat(class(num3)) 
+num4<-TRUE 
+cat(class(num4)) 
+num5<-3+4i 
+cat(class(num5)) 
+
+3)Write an R program to demonstrate relational and logical operators. 
+a<-10 
+b<-20 
+cat(a==b) 
+cat(a!=b) 
+cat(a>b) 
+cat(a<b) 
+cat(a>=b) 
+cat(a<=b) 
+cat(a&b) 
+cat(a|b) 
+cat(!a) 
+cat(a&&b) 
+cat(a||b) 
+
+4)Write an R program to calculate square root, logarithm, exponential, and factorial of numbers using 
+built-in functions. 
+num<-9 
+cat(sqrt(num)) 
+cat(log(num)) 
+cat(exp(num)) 
+cat(factorial(num)) 
+
+5) Write an R program to find the mean, median, mode, variance, and standard deviation of a numeric 
+vector. 
+num<-c(2,5,3,7,9,1,2,3,6) 
+cat(mean(num)) 
+cat(median(num)) 
+get_mode<-function(v){ 
+uniq_vals<-unique(v) 
+uniq_vals[which.max(tabulate(match(v,uniq_vals)))] 
+} 
+cat(get_mode(num)) 
+cat(var(num)) 
+cat(sd(num)) 
+
+6)Write an R program to create a vector and perform indexing,  and basic operations. 
+v<-c(1,9,2,8,3,7,4,6,5) 
+cat(v[1]) 
+cat(v[2:3]) 
+cat(v[-3]) 
+cat(v+1) 
+cat(v*2) 
+cat(sum(v)) 
+cat(mean(v)) 
+cat(max(v)) 
+cat(min(v)) 
+cat(sort(v)) 
+cat(sort(v,decreasing = TRUE)) 
+
+7)Write an R program to create a matrix and perform basic operations . 
+mat<-matrix(c(1,2,3,4,5,6,7,8,9,2,3,6),nrow=3,ncol=4) 
+print(mat) 
+print(mat[2,3]) 
+print(mat[3,]) 
+print(mat[,4]) 
+print(mat+5) 
+print(mat*2) 
+print(sum(mat)) 
+print(rowSums(mat)) 
+print(colSums(mat)) 
+print(t(mat)) 
+
+8)Write an R program to create a list with different data types and access its elements. 
+a<-list(name="Anu",age=19,marks=c(19,17,18),pass=TRUE,details = list(city = "Hyderabad", country = "India")) 
+print(a) 
+cat(a$name) 
+cat(a$marks[2]) 
+cat(a[[2]]) 
+cat(a$details$city) 
+
+9)Write an R program to create a data frame of student details and display summary statistics. 
+students <- data.frame( 
+Name = c("Anusri", "Ravi", "Sneha", "Kiran", "Amit"), 
+Age = c(19, 20, 18, 21, 20), 
+Gender =factor( c("Female", "Male", "Female", "Male", "Male")), 
+Marks = c(85, 90, 78, 88, 92), 
+Passed =factor( c(TRUE, TRUE, TRUE, TRUE, TRUE)) 
+) 
+print(students) 
+summary(students) 
+print(table(students$Gender)) 
+mean(students$Marks) 
+max(students$Marks) 
+
+10)Write an R program to access specific rows and columns of a data frame using indexing. 
+students <- data.frame( 
+Name = c("Anusri", "Ravi", "Sneha", "Kiran", "Amit"), 
+Age = c(19, 20, 18, 21, 20), 
+Gender =factor( c("Female", "Male", "Female", "Male", "Male")), 
+Marks = c(85, 90, 78, 88, 92), 
+Passed =factor( c(TRUE, TRUE, TRUE, TRUE, TRUE)) 
+) 
+print(students[1,]) #row1 
+print(students[2:4,]) #row 2,3,4 
+print(students[,"Marks"])#col 
+print(students[,c("Age","Passed")])#mul cols 
+print(students[1,"Marks"])#row and col 
+print(students[,2]) 
+print(students[["Marks"]]) 
+print(students[[3]]) 
+print(students$Name) 
+print(subset(students, select = c(Name, Marks))) 
+
+11)Write an R program to subset a vector using the subset function. 
+numbers <- c(10, 15, 20, 25, 30, 35, 40) 
+subset_gt20 <- subset(numbers, numbers > 20) 
+print(subset_gt20) 
+
+12)Write an R program to import a CSV file and display the first few rows. 
+file<-"C:/Users/HP/Downloads/annual-enterprise-survey-2024-financial-year-provisional.csv" 
+stu<-read.csv(file,header=TRUE) 
+head(stu) 
+tail(stu) 
+str(stu) 
+
+13)Write an R program to import data from an Excel file using the `readxl` package. 
+install.packages("readxl") 
+library(readxl) 
+file<-"C:/Users/HP/Downloads/file_example_XLSX_10.xlsx" 
+stu<-read_excel(file) 
+head(stu) 
+str(stu) 
+summary(stu) 
+
+14)Write an R program to detect and remove missing values and duplicates from a data frame. 
+vec <- c(10, 20, NA, 30, 20, 40, NA, 50, 10) 
+cat("Original Vector:\n") 
+print(vec) 
+cat("\n") 
+cat("Missing values in the vector:\n") 
+print(is.na(vec)) 
+cat("Number of missing values:", sum(is.na(vec)), "\n\n") 
+vec_no_na <- na.omit(vec) 
+cat("Vector after removing missing values:\n") 
+print(vec_no_na) 
+cat("\n") 
+cat("Duplicate elements in the vector:\n") 
+print(vec_no_na[duplicated(vec_no_na)]) 
+cat("\n") 
+vec_no_dup <- unique(vec_no_na) 
+cat("Vector after removing duplicates:\n") 
+print(vec_no_dup) 
+
+15)Write an R program to identify and handle outliers in numeric data. 
+marks <- c(85, 90, 78, 88, 92, 150, 20) 
+cat("Original Marks:\n") 
+print(marks) 
+cat("\n") 
+Q1 <- quantile(marks, 0.25) 
+Q3 <- quantile(marks, 0.75) 
+IQR_value <- Q3 - Q1 
+lower_bound <- Q1 - 1.5 * IQR_value 
+upper_bound <- Q3 + 1.5 * IQR_value 
+cat("Lower Bound:", lower_bound, "\n") 
+cat("Upper Bound:", upper_bound, "\n") 
+outliers <- marks[marks < lower_bound | marks > upper_bound] 
+cat("Outliers in the data:", outliers, "\n") 
+marks_no_outliers <- marks[marks >= lower_bound & marks <= upper_bound] 
+cat("Marks after removing outliers:\n") 
+print(marks_no_outliers)
+
+16)Write an R program to give summary , internal structure of data and write a program to merge two data 
+frames. 
+students <- data.frame( 
+Name = c("Anusri", "Ravi", "Sneha", "Kiran", "Amit"), 
+Age = c(19, 20, 18, 21, 20), 
+Marks = c(85, 90, 78, 88, 92), 
+Passed = c(TRUE, TRUE, TRUE, TRUE, TRUE) 
+) 
+cat("Student Data Frame:\n") 
+print(students) 
+cat("\n") 
+cat("Summary Statistics:\n") 
+print(summary(students)) 
+cat("\n") 
+cat("Structure of the data frame:\n") 
+str(students)
